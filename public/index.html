@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+
+	<title>Atilla • Applications hybrides</title>
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="assets/revealjs/css/reveal.css">
+	<link rel="stylesheet" href="assets/css/blood.css" id="theme">
+	<link rel="stylesheet" href="assets/css/styles.css" />
+	<link rel="stylesheet" href="assets/revealjs/lib/css/zenburn.css">
+
+</head>
+
+<body>
+
+	<form class="login">
+		<span>
+			What's your secret key?
+		</span>
+
+		<input type="password" placeholder="Please enter your secret key!"/>
+		<input type="submit" value="➡" />f
+	</form>
+
+	<div class="reveal blurred">
+
+		<div class="logo-atilla">
+			<img src="assets/img/logo.png"/>
+		</div>
+
+		<div class="slides">
+			<section>
+				<h1>Atilla</h1>
+				<h3>Applications hybrides</h3>
+				<footer>
+					<div style="height: 100%; width: 100%; overflow: hidden;">
+						<img class="circular" src="assets/img/kivy-logo-black-256.png" style="float: left;"></img>
+						<img class="circular" src="assets/img/cordova_bot.png" style="float: right;"></img>
+					</div>
+					<small>Clément Villain</small><br>
+					<small>Lundi 1er février 2016</small>
+				</footer>
+			</section>
+
+			<section>
+				<section>
+					<h1>Une application hybride, c'est quoi?</h1>
+				</section>
+
+				<section>
+					<p>
+						<h5>Du code natif</h5>
+						<ul>
+						  <li class="fragment">Android - Java</li>
+							<li class="fragment">iOS - Swift</li>
+						  <li class="fragment">Windows phone - C#</li>
+						</ul>
+					</p>
+				</section>
+
+				<section>
+					<p>
+						<h5>Contre du code portable</h5>
+						<ul>
+						  <li class="fragment">Kivy - Python</li>
+							<li class="fragment">Apache Cordova - HTML5/CSS3/JS</li>
+						</ul>
+					</p>
+				</section>
+
+			</section>
+
+			<section>
+				<section>
+					<h1>Kivy</h1>
+				</section>
+
+				<section>
+					<h5>Une application que vous connaissez peut être</h5>
+					<img src="assets/img/contacts.png"></img>
+				</section>
+
+				<section>
+					<h5>Quelques caractéristiques</h5>
+					<ul>
+						<li class="fragment">Python</li>
+						<li class="fragment">Cross platform</li>
+						<li class="fragment">Open Source</li>
+						<li class="fragment">Licence MIT</li>
+					</ul>
+				</section>
+
+				<section>
+					<h5>Hello World</h5>
+					<pre style="float: left; width: 50%">
+						<code class="python" style="overflow: null;">
+from kivy.app import App
+from kivy.uix.button import Button
+
+class TestApp(App):
+  def build(self):
+      return Button(text='Hello World')
+
+TestApp().run()
+						</code>
+					</pre>
+					<img  src="assets/img/helloworld.png" style="float: right; width: 40%; height: auto"></img>
+				</section>
+
+				<section>
+					<h5>Comment ça marche?</h5>
+					<ul>
+						<li class="fragment">Widgets</li>
+						<li class="fragment">Système de callback</li>
+						<li class="fragment">Description graphique dans un .kv</li>
+					</ul>
+				</section>
+
+				<section>
+					<h5>Exemple d'un .kv</h5>
+					<pre>
+						<code class="python">
+#:kivy 1.9.0
+
+&ltDelEventPopup>:
+    size_hint: (0.3, 0.3)
+    title: 'Voulez vous vraiment supprimer cet évènement?'
+    title_size: 15
+
+    BoxLayout:
+        spacing: 20
+        padding: 20
+        Button:
+            text: "Oui"
+            on_release: root.delete_event()
+        Button:
+            text: "Non"
+            on_release: root.dismiss()
+
+						</code>
+					</pre>
+				</section>
+
+
+				<section>
+					<h5>Les avantages</h5>
+					<ul>
+						<li class="fragment">Langage haut niveau</li>
+						<li class="fragment">Dévelopement simplifié (pas d'émulateur)</li>
+						<li class="fragment">Accès à l'éco-système Python</li>
+						<li class="fragment">Déploiement très simple</li>
+						<pre class="fragment">
+							<code class="python">
+	buildozer android debug deploy run
+							</code>
+						</pre>
+					</ul>
+				</section>
+
+
+				<section>
+					<h5>Les inconvénients</h5>
+					<ul>
+						<li class="fragment">Quelques problèmes de documentation</li>
+						<li class="fragment">La communauté n'est pas très grande</li>
+						<li class="fragment">Encore quelques bugs pour le passage sous Android?</li>
+						<li class="fragment">Assez récent pour iOS</li>
+						<li class="fragment">Une GUI pour créer l'interface est en cours</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h1>Apache Cordova</h1>
+				</section>
+
+				<section>
+					<h5>Exemples d'application cordova</h5>
+					<div style="display: inline-block; padding: 20px;">
+						<img src="assets/img/newvo.png" style="height: 400px"></img>
+						<p>NewVo</p>
+					</div>
+					<div style="display: inline-block; padding: 20px;">
+						<img src="assets/img/workout.png" style="height: 400px"></img>
+						<p>Sworkit</p>
+					</div>
+					<div style="display: inline-block; padding: 20px;">
+						<img src="assets/img/gudog.png" style="height: 400px"></img>
+						<p>Gudog</p>
+					</div>
+				</section>
+
+				<section>
+					<h5>Quelques caractéristiques</h5>
+					<ul>
+						<li class="fragment">HTML/CSS/Javascript</li>
+						<li class="fragment">Cross platform</li>
+						<li class="fragment">Open Source</li>
+						<li class="fragment">SPA - Single Page Application</li>
+					</ul>
+				</section>
+
+				<section>
+					<h5>Comment ça marche?</h5>
+					<img src="assets/img/conveyor.png" style="height: 400px"></img>
+				</section>
+
+
+				<section>
+					<h5>Choisir son framework</h5>
+					<img src="assets/img/maxresdefault.jpg" style="height: 400px"></img>
+					<div>AngularJS, Ember.js, Backbone.js... et plein d'autres !</div>
+				</section>
+
+				<section>
+					<h5>Les avantages</h5>
+					<ul>
+						<li class="fragment">Une seule code base</li>
+						<li class="fragment">Dévelopement rapide</li>
+						<li class="fragment">Déploiement très simple</li>
+						<pre class="fragment">
+							<code class="python">
+cordova run android
+							</code>
+						</pre>
+					</ul>
+				</section>
+
+				<section>
+					<h5>Inconvénients</h5>
+					<ul>
+						<li class="fragment">SEO</li>
+						<li class="fragment">Design Android versus iOS</li>
+						<li class="fragment">Gestion offline</li>
+						<li class="fragment">Long chargement initial</li>
+					</ul>
+				</section>
+
+			</section>
+			<section>
+				<section>
+					<h1>Conclusion</h1>
+				</section>
+				<section>
+					<h5>Choisissez ce qu'il vous plait !</h5>
+				</section>
+			</section>
+
+		</div>
+	</div>
+
+	<!-- Including the JS libraries that we use -->
+	<script src="assets/js/jquery-2.1.3.min.js"></script>
+
+	<!-- Reveal.js is for presentations -->
+	<script src="assets/revealjs/lib/js/head.min.js"></script>
+	<script src="assets/revealjs/js/reveal.js"></script>
+
+	<!-- Socket.io library -->
+	<script src="/socket.io/socket.io.js"></script>
+
+	<!-- Main JavaScript file -->
+	<script src="assets/js/script.js"></script>
+
+</body>
+</html>
